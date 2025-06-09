@@ -1,0 +1,140 @@
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: var(--primary-green);
+}
+
+.auth-card {
+  background-color: var(--card-background);
+  padding: 40px 50px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+  text-align: left;
+}
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.auth-card {
+  background-color: var(--card-background);
+  padding: 40px 50px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: left;
+}
+
+.auth-card h2 {
+  text-align: center;
+  font-size: 28px;
+  color: var(--text-color);
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.input-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 8px;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.input-group input::placeholder {
+  color: var(--placeholder-color);
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-options .forgot-password {
+  font-size: 14px;
+  color: var(--primary-green);
+  text-decoration: none;
+}
+
+.auth-button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  background-color: var(--primary-green);
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.auth-button:hover {
+  background-color: var(--light-green);
+}
+
+.divider {
+  text-align: center;
+  margin: 20px 0;
+  color: #ccc;
+  font-size: 14px;
+}
+
+.google-button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  background-color: #4285F4; /* Cor oficial do Google */
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.google-button:hover {
+  background-color: #357ae8;
+}
+
+.switch-page-link {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 14px;
+}
+
+.switch-page-link a {
+  color: var(--primary-green);
+  font-weight: 700;
+  text-decoration: none;
+}

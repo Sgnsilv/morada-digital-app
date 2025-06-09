@@ -1,0 +1,87 @@
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--page-background);
+}
+
+.main-header {
+  background-color: var(--primary-green);
+  color: white;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.main-header .logo {
+  font-size: 24px;
+  font-weight: 700;
+  margin-right: 40px;
+}
+
+.main-nav {
+  display: flex;
+  height: 100%;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.nav-link.active {
+  color: white;
+  border-bottom-color: var(--light-green);
+}
+
+.nav-icon {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.main-header .logout-button {
+  margin-left: auto;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.main-header .logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.main-content {
+  flex-grow: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}

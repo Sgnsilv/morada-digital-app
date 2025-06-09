@@ -1,0 +1,56 @@
+.dashboard-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f4f6f8; /* Um cinza bem claro para o fundo do corpo */
+}
+
+/* O nosso cabeçalho verde */
+.dashboard-header {
+  background-color: var(--primary-green);
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between; /* Alinha itens nas extremidades */
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-header .logo {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.dashboard-header .logout-button {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dashboard-header .logout-button:hover {
+  background-color: white;
+  color: var(--primary-green);
+}
+
+/* A área de conteúdo principal */
+.dashboard-content {
+  flex-grow: 1;
+  width: 100%;
+  max-width: 1200px; /* Largura máxima para o conteúdo */
+  margin: 30px auto; /* Centraliza a área de conteúdo */
+  padding: 30px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+.welcome-message h1 {
+  margin-top: 0;
+}
