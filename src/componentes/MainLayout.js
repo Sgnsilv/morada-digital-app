@@ -3,7 +3,7 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebaseConfig';
 import './MainLayout.css';
-import { FiGrid, FiCalendar, FiLogOut } from 'react-icons/fi';
+import { FiGrid, FiCalendar, FiUserCheck, FiLogOut } from 'react-icons/fi';
 
 function MainLayout() {
   const navigate = useNavigate();
@@ -29,6 +29,10 @@ function MainLayout() {
           <NavLink to="/agendamentos" className="nav-link">
             <FiCalendar className="nav-icon" />
             <span>Agendamentos</span>
+          </NavLink>
+          <NavLink to="/minhas-reservas" className="nav-link">
+            <FiUserCheck className="nav-icon" />
+            <span>Minhas Reservas</span>
           </NavLink>
         </nav>
         <button className="logout-button" onClick={handleLogout}>

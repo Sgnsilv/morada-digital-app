@@ -1,0 +1,101 @@
+.minhas-reservas-container h2 {
+  font-weight: 700;
+  color: var(--text-color);
+  border-bottom: 2px solid var(--primary-green);
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.reservas-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Layout responsivo em grade */
+  gap: 20px;
+}
+
+.reserva-card {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.reserva-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.reserva-card-header {
+  padding: 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.reserva-card-header h3 {
+  margin: 0;
+  font-size: 1.2em;
+  color: var(--primary-green);
+}
+
+.reserva-card-body {
+  padding: 20px;
+  flex-grow: 1; /* Faz esta área ocupar o espaço disponível */
+}
+
+.reserva-card-body p {
+  margin: 0 0 10px 0;
+  color: #555;
+  display: flex;
+  align-items: center;
+}
+
+.reserva-card-body p strong {
+  margin-right: 8px;
+  color: var(--text-color);
+}
+
+.reserva-card-footer {
+  padding: 15px 20px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.reserva-status {
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 0.8em;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+}
+
+.status-aprovado {
+  background-color: var(--light-green);
+}
+
+.status-pendente {
+  background-color: #f39c12; /* Laranja */
+}
+
+.cancel-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.cancel-button:hover {
+  background-color: #c0392b;
+}

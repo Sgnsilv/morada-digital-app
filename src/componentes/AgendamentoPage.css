@@ -1,0 +1,158 @@
+/* Estilos para o formulário de reserva */
+.booking-form {
+  margin-bottom: 30px;
+  padding: 25px;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.booking-form h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Espaço entre os itens */
+  align-items: flex-end; /* Alinha os itens na base */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Permite que os grupos cresçam */
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.form-row button {
+  padding: 10px 25px;
+  height: 43px; /* Mesma altura dos inputs */
+  border: none;
+  background-color: var(--primary-green);
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-row button:hover {
+  background-color: var(--light-green);
+}
+
+
+/* Customização do React Big Calendar */
+.rbc-toolbar {
+  margin-bottom: 20px !important;
+}
+
+.rbc-toolbar .rbc-btn-group button {
+  background-color: white;
+  color: var(--primary-green);
+  border: 1px solid var(--primary-green);
+  transition: all 0.3s ease;
+}
+
+.rbc-toolbar .rbc-btn-group button:hover,
+.rbc-toolbar .rbc-btn-group button.rbc-active {
+  background-color: var(--primary-green) !important;
+  color: white !important;
+}
+
+.rbc-event {
+  padding: 5px !important;
+  border-radius: 5px !important;
+}
+
+.rbc-today {
+  background-color: #eaf6ff !important;
+}
+
+
+/* Estilos do Modal (que já tínhamos) */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  width: 90%;
+  max-width: 500px;
+}
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  width: 90%;
+  max-width: 500px;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+}
+
+.modal-content .close-button {
+  background-color: #ccc;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.modal-content .cancel-button {
+  background-color: #e74c3c; /* Vermelho */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-right: 10px;
+}
