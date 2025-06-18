@@ -1,0 +1,23 @@
+.sub-nav {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 25px;
+}
+
+.sub-nav-link {
+  padding: 12px 25px;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.sub-nav-link:hover {
+  color: var(--primary-green);
+}
+
+.sub-nav-link.active {
+  color: var(--primary-green);
+  border-bottom-color: var(--primary-green);
+}

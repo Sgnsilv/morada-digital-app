@@ -1,0 +1,103 @@
+/* Estilos para DocumentosPage.css */
+
+.documentos-container h2 {
+  border-bottom: 2px solid var(--primary-green);
+  padding-bottom: 10px;
+}
+
+.doc-form {
+  background: #fdfdfd;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 25px;
+  margin: 40px 0;
+}
+
+.doc-form h3 {
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.doc-form .form-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.doc-form .form-group {
+  flex-grow: 1;
+}
+
+.doc-form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.doc-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.doc-form button {
+  padding: 10px 25px;
+  height: 42px;
+  border: none;
+  background-color: var(--primary-green);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.doc-list {
+  margin-top: 30px;
+  display: grid;
+  gap: 15px;
+}
+
+.doc-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.doc-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.doc-icon {
+  font-size: 2.5em;
+  color: var(--primary-green);
+  margin-right: 20px;
+}
+
+.doc-info {
+  flex-grow: 1;
+}
+
+.doc-info h4 {
+  margin: 0 0 5px 0;
+}
+
+.doc-info span {
+  font-size: 0.9em;
+  color: #777;
+}
+
+.download-icon {
+  font-size: 1.5em;
+  color: #ccc;
+}

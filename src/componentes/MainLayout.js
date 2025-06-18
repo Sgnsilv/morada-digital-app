@@ -1,9 +1,16 @@
-import React from 'react';
-import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { signOut } from 'firebase/auth';
-import { auth } from '../firebaseConfig';
-import './MainLayout.css';
-import { FiGrid, FiCalendar, FiUserCheck, FiLogOut } from 'react-icons/fi';
+import React from "react";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebaseConfig";
+import "./MainLayout.css";
+// Adicionamos os ícones que vamos usar
+import {
+  FiGrid,
+  FiCalendar,
+  FiMessageSquare,
+  FiFileText,
+  FiLogOut,
+} from "react-icons/fi";
 
 function MainLayout() {
   const navigate = useNavigate();
@@ -11,7 +18,7 @@ function MainLayout() {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      navigate('/login');
+      navigate("/login");
     } catch (error) {
       console.error("Erro ao fazer logout:", error);
     }
@@ -26,13 +33,19 @@ function MainLayout() {
             <FiGrid className="nav-icon" />
             <span>Painel</span>
           </NavLink>
+          {/* Link único que leva para a seção de agendamentos (com as sub-abas) */}
           <NavLink to="/agendamentos" className="nav-link">
             <FiCalendar className="nav-icon" />
             <span>Agendamentos</span>
           </NavLink>
-          <NavLink to="/minhas-reservas" className="nav-link">
-            <FiUserCheck className="nav-icon" />
-            <span>Minhas Reservas</span>
+          <NavLink to="/mural-de-avisos" className="nav-link">
+            <FiMessageSquare className="nav-icon" />
+            <span>Mural de Avisos</span>
+          </NavLink>
+          {/* NOVO LINK PARA A PÁGINA DE DOCUMENTOS */}
+          <NavLink to="/documentos" className="nav-link">
+            <FiFileText className="nav-icon" />
+            <span>Documentos</span>
           </NavLink>
         </nav>
         <button className="logout-button" onClick={handleLogout}>
@@ -40,6 +53,7 @@ function MainLayout() {
           <span>Sair</span>
         </button>
       </header>
+
       <main className="main-content">
         <Outlet />
       </main>
