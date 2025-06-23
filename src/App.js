@@ -1,17 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth, db } from './firebaseConfig';
-import { doc, getDoc } from 'firebase/firestore';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, db } from "./firebaseConfig";
+import { doc, getDoc } from "firebase/firestore";
 
-// Componentes
-import MainLayout from './componentes/MainLayout';
-import LoginPage from './componentes/LoginPage';
-import RegisterPage from './componentes/RegisterPage';
-import ForgotPasswordPage from './componentes/ForgotPasswordPage';
-import DashboardPage from './componentes/DashboardPage';
-import AgendamentoPage from './componentes/AgendamentoPage';
-import MinhasReservasPage from './componentes/MinhasReservasPage';
+// Layouts e Páginas
+import MainLayout from "./componentes/MainLayout";
+import LoginPage from "./componentes/LoginPage";
+import RegisterPage from "./componentes/RegisterPage";
+import ForgotPasswordPage from "./componentes/ForgotPasswordPage";
+import DashboardPage from "./componentes/DashboardPage";
+import MuralDeAvisosPage from "./componentes/MuralDeAvisosPage";
+import DocumentosPage from "./componentes/DocumentosPage"; // Importe a página
+
+// Componentes da Seção de Agendamentos
+import AgendamentoLayout from "./componentes/AgendamentoLayout";
+import CalendarioPage from "./componentes/CalendarioPage";
+import MinhasReservasPage from "./componentes/MinhasReservasPage";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -23,7 +28,11 @@ function App() {
         const userDocRef = doc(db, "users", user.uid);
         const userDoc = await getDoc(userDocRef);
         if (userDoc.exists()) {
-          setCurrentUser({ uid: user.uid, email: user.email, profile: userDoc.data() });
+          setCurrentUser({
+            uid: user.uid,
+            email: user.email,
+            profile: userDoc.data(),
+          });
         } else {
           setCurrentUser(user);
         }
@@ -42,25 +51,59 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Rotas Públicas (para quem não está logado) */}
-        <Route path="/login" element={!currentUser ? <LoginPage /> : <Navigate to="/dashboard" />} />
-        <Route path="/cadastro" element={!currentUser ? <RegisterPage /> : <Navigate to="/dashboard" />} />
-        <Route path="/recuperar-senha" element={!currentUser ? <ForgotPasswordPage /> : <Navigate to="/dashboard" />} />
+        {/* Rotas Públicas */}
+        <Route
+          path="/login"
+          element={!currentUser ? <LoginPage /> : <Navigate to="/dashboard" />}
+        />
+        <Route
+          path="/cadastro"
+          element={
+            !currentUser ? <RegisterPage /> : <Navigate to="/dashboard" />
+          }
+        />
+        <Route
+          path="/recuperar-senha"
+          element={
+            !currentUser ? <ForgotPasswordPage /> : <Navigate to="/dashboard" />
+          }
+        />
 
-        {/* Rotas Protegidas (que usam nosso layout com cabeçalho verde) */}
-        <Route 
-          path="/" 
+        {/* Rotas Protegidas */}
+        <Route
+          path="/"
           element={currentUser ? <MainLayout /> : <Navigate to="/login" />}
         >
-          {/* As rotas filhas são renderizadas dentro do <Outlet> do MainLayout */}
           <Route index element={<Navigate to="/dashboard" />} />
-          <Route path="dashboard" element={<DashboardPage user={currentUser} />} />
-          <Route path="agendamentos" element={<AgendamentoPage user={currentUser} />} />
+          <Route
+            path="dashboard"
+            element={<DashboardPage user={currentUser} />}
+          />
+          <Route
+            path="mural-de-avisos"
+            element={<MuralDeAvisosPage user={currentUser} />}
+          />
+
+          {/* ROTA CORRETA PARA A PÁGINA DE DOCUMENTOS */}
+          <Route
+            path="documentos"
+            element={<DocumentosPage user={currentUser} />}
+          />
+
+          <Route path="agendamentos" element={<AgendamentoLayout />}>
+            <Route index element={<Navigate to="calendario" replace />} />
+            <Route
+              path="calendario"
+              element={<CalendarioPage user={currentUser} />}
+            />
+            <Route
+              path="minhas-reservas"
+              element={<MinhasReservasPage user={currentUser} />}
+            />
+          </Route>
         </Route>
 
-        {/* Qualquer outra rota não encontrada redireciona para a página inicial */}
         <Route path="*" element={<Navigate to="/" />} />
-        <Route path="minhas-reservas" element={<MinhasReservasPage />} />
       </Routes>
     </BrowserRouter>
   );
