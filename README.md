@@ -1,7 +1,4 @@
-# Morada Digital  Condomínios
-
-![Morada Digital](https://i.imgur.com/k2RkZlJ.png) 
-*Banner ilustrativo do projeto*
+# Morada Digital
 
 ## 📖 Sobre o Projeto
 
