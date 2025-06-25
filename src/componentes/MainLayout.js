@@ -3,12 +3,15 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import "./MainLayout.css";
+// Adicionamos o novo ícone aqui
 import {
   FiGrid,
   FiCalendar,
   FiMessageSquare,
   FiFileText,
+  FiHelpCircle,
   FiLogOut,
+  FiUsers,
 } from "react-icons/fi";
 
 function MainLayout() {
@@ -40,10 +43,13 @@ function MainLayout() {
             <FiMessageSquare className="nav-icon" />
             <span>Mural de Avisos</span>
           </NavLink>
-          {/* LINK CORRETO PARA A PÁGINA DE DOCUMENTOS */}
           <NavLink to="/documentos" className="nav-link">
             <FiFileText className="nav-icon" />
             <span>Documentos</span>
+          </NavLink>
+          <NavLink to="/achados-e-perdidos" className="nav-link">
+            <FiHelpCircle className="nav-icon" />
+            <span>Achados e Perdidos</span>
           </NavLink>
         </nav>
         <button className="logout-button" onClick={handleLogout}>
@@ -51,6 +57,10 @@ function MainLayout() {
           <span>Sair</span>
         </button>
       </header>
+      <NavLink to="/visitantes" className="nav-link">
+        <FiUsers className="nav-icon" />
+        <span>Visitantes</span>
+      </NavLink>
       <main className="main-content">
         <Outlet />
       </main>

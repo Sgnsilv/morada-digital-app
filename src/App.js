@@ -11,7 +11,9 @@ import RegisterPage from "./componentes/RegisterPage";
 import ForgotPasswordPage from "./componentes/ForgotPasswordPage";
 import DashboardPage from "./componentes/DashboardPage";
 import MuralDeAvisosPage from "./componentes/MuralDeAvisosPage";
-import DocumentosPage from "./componentes/DocumentosPage"; // Importe a página
+import DocumentosPage from "./componentes/DocumentosPage";
+import AchadosEPerdidosPage from "./componentes/AchadosEPerdidosPage";
+import VisitantesPage from "./componentes/VisitantesPage";
 
 // Componentes da Seção de Agendamentos
 import AgendamentoLayout from "./componentes/AgendamentoLayout";
@@ -69,7 +71,7 @@ function App() {
           }
         />
 
-        {/* Rotas Protegidas */}
+        {/* Rotas Protegidas que usam o MainLayout */}
         <Route
           path="/"
           element={currentUser ? <MainLayout /> : <Navigate to="/login" />}
@@ -83,13 +85,19 @@ function App() {
             path="mural-de-avisos"
             element={<MuralDeAvisosPage user={currentUser} />}
           />
-
-          {/* ROTA CORRETA PARA A PÁGINA DE DOCUMENTOS */}
           <Route
             path="documentos"
             element={<DocumentosPage user={currentUser} />}
           />
-
+          <Route
+            path="visitantes"
+            element={<VisitantesPage user={currentUser} />}
+          />
+          <Route
+            path="achados-e-perdidos"
+            element={<AchadosEPerdidosPage user={currentUser} />}
+          />
+          {/* Estrutura Aninhada para a Seção de Agendamentos */}
           <Route path="agendamentos" element={<AgendamentoLayout />}>
             <Route index element={<Navigate to="calendario" replace />} />
             <Route
