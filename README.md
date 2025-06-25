@@ -4,7 +4,7 @@
 
 **Morada Digital** é uma plataforma web para gestão integrada de condomínios residenciais. [cite_start]O projeto nasceu da necessidade de superar as limitações dos sistemas atuais, que são em grande parte fragmentados, manuais e pouco eficientes. A solução busca centralizar as operações essenciais do dia a dia de um condomínio, promovendo uma comunicação mais clara e uma gestão mais transparente e eficaz.
 
-Este projeto foi desenvolvido como parte das atividades da disciplina de CTA na Universidade Federal do Rio Grande do Norte (UFRN). [cite_start]A abordagem foi centrada no usuário, priorizando a acessibilidade e a usabilidade para os três perfis principais do ecossistema condominial.
+Este projeto foi desenvolvido como parte das atividades da disciplina de CTA na Universidade Federal do Rio Grande do Norte (UFRN). A abordagem foi centrada no usuário, priorizando a acessibilidade e a usabilidade para os três perfis principais do ecossistema condominial.
 
 ## ✨ Funcionalidades Implementadas
 
