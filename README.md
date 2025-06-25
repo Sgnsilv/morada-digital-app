@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# Morada Digital
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📖 Sobre o Projeto
 
-## Available Scripts
+**Morada Digital** é uma plataforma web para gestão integrada de condomínios residenciais. [cite_start]O projeto nasceu da necessidade de superar as limitações dos sistemas atuais, que são em grande parte fragmentados, manuais e pouco eficientes. A solução busca centralizar as operações essenciais do dia a dia de um condomínio, promovendo uma comunicação mais clara e uma gestão mais transparente e eficaz.
 
-In the project directory, you can run:
+Este projeto foi desenvolvido como parte das atividades da disciplina de CTA na Universidade Federal do Rio Grande do Norte (UFRN). A abordagem foi centrada no usuário, priorizando a acessibilidade e a usabilidade para os três perfis principais do ecossistema condominial.
 
-### `npm start`
+## ✨ Funcionalidades Implementadas
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Atualmente, a plataforma conta com os seguintes módulos funcionais:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* **Sistema de Autenticação Completo:**
+    * Cadastro e Login com e-mail e senha.
+    * Login social integrado com o Google.
+    * Funcionalidade de "Recuperar Senha" com envio de e-mail.
+    * Rotas protegidas e gestão de sessão de usuário.
 
-### `npm test`
+* **Gestão de Perfis de Usuário:**
+    * [cite_start]Diferenciação entre perfis: **síndico, morador e funcionário**.
+    * Painel exclusivo para o síndico aprovar ou gerenciar novos cadastros, garantindo o controle de acesso ao condomínio.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* **Módulo de Agendamentos de Áreas Comuns:**
+    * Calendário interativo para visualização de todas as reservas.
+    * Formulário para criação de novas reservas, com validação que impede agendamentos duplicados no mesmo horário e local.
+    * Permissão para que apenas o dono da reserva ou o síndico possam cancelá-la.
+    * Diferenciação visual por cores para cada área comum no calendário.
 
-### `npm run build`
+* **Módulo de Comunicação (Mural de Avisos):**
+    * O síndico possui uma interface para criar e publicar comunicados para todo o condomínio.
+    * Todos os moradores logados podem visualizar o mural com os avisos em ordem cronológica.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* **Módulo de Gestão Documental:**
+    * O síndico pode adicionar documentos importantes (atas, regimentos, etc.) através de links compartilháveis (ex: Google Drive).
+    * Os moradores têm acesso a uma página centralizada para visualizar e baixar todos os documentos.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* **Módulo de Achados e Perdidos:**
+    * Plataforma colaborativa onde qualquer usuário pode registrar um item que perdeu ou encontrou nas áreas comuns.
+    * Lista de itens com status visual ("Achado" ou "Perdido") para facilitar a devolução.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🛠️ Tecnologias Utilizadas
 
-### `npm run eject`
+O projeto foi construído utilizando um conjunto de tecnologias para desenvolvimento web:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* **Frontend:**
+    * **React.js:** Biblioteca principal para a construção da interface de usuário.
+    * **CSS3:** Para estilização customizada dos componentes.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* **Backend (BaaS - Backend as a Service):**
+    * **Firebase:** Plataforma utilizada para todos os serviços de backend.
+        * **Firebase Authentication:** Para gestão de usuários (login, cadastro, etc.).
+        * **Cloud Firestore:** Como banco de dados NoSQL para salvar todas as informações da aplicação (reservas, avisos, documentos, etc.).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* **Ferramentas de Desenvolvimento:**
+    * **Git & GitHub:** Para controle de versão e hospedagem do código.
+    * **VS Code & CodeSandbox:** Ambientes de desenvolvimento utilizados.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<!-- O aplicativo estará disponível em `http://localhost:3000`-->
