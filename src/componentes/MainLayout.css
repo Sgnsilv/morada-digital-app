@@ -1,42 +1,49 @@
 .main-layout {
   display: flex;
-  flex-direction: column;
   min-height: 100vh;
-  background-color: var(--page-background);
 }
 
-.main-header {
+/* --- Barra Lateral (Sidebar) --- */
+.sidebar {
+  width: 260px;
   background-color: var(--primary-green);
   color: white;
-  padding: 0 30px;
   display: flex;
-  align-items: center;
-  height: 64px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+  flex-direction: column;
+  padding: 15px;
+  box-sizing: border-box;
+  transition: width 0.3s ease; /* Animação para encolher/expandir */
 }
 
-.main-header .logo {
-  font-size: 24px;
+.sidebar .logo {
+  font-size: 28px;
   font-weight: 700;
-  margin-right: 40px;
+  text-align: center;
+  padding: 20px 0;
+  margin-bottom: 20px;
+  white-space: nowrap; /* Impede que o texto quebre a linha */
+  overflow: hidden; /* Esconde o texto que vazar */
 }
 
 .main-nav {
   display: flex;
-  height: 100%;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
 }
 
 .nav-link {
   display: flex;
   align-items: center;
-  padding: 0 20px;
+  padding: 15px;
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
-  border-bottom: 3px solid transparent;
+  border-radius: 8px;
   transition: all 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .nav-link:hover {
@@ -45,43 +52,93 @@
 }
 
 .nav-link.active {
+  background-color: var(--light-green);
   color: white;
-  border-bottom-color: var(--light-green);
+  font-weight: 700;
 }
 
 .nav-icon {
-  margin-right: 8px;
-  font-size: 18px;
+  margin-right: 15px;
+  font-size: 20px;
+  min-width: 20px; /* Garante que o ícone não seja espremido */
 }
 
-.main-header .logout-button {
-  margin-left: auto;
-  background-color: transparent;
-  color: rgba(255, 255, 255, 0.7);
+.sidebar .logout-button {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
   border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
+  width: 100%;
+  padding: 15px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   display: flex;
   align-items: center;
-  transition: background-color 0.3s, color 0.3s;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-.main-header .logout-button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
+.sidebar .logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* --- Estilos para quando o menu estiver fechado --- */
+.main-layout.sidebar-closed .sidebar {
+  width: 80px; /* Largura do menu fechado */
+  padding: 15px 10px;
+}
+
+.main-layout.sidebar-closed .sidebar .logo {
+  font-size: 20px;
+}
+
+/* Esconde o texto dos links, deixando só o ícone */
+.main-layout.sidebar-closed .sidebar .nav-link span,
+.main-layout.sidebar-closed .sidebar .logout-button span {
+  display: none;
+}
+
+.main-layout.sidebar-closed .sidebar .nav-link,
+.main-layout.sidebar-closed .sidebar .logout-button {
+  justify-content: center;
+}
+
+.main-layout.sidebar-closed .sidebar .nav-icon {
+  margin-right: 0;
+}
+
+/* --- Área de Conteúdo (Direita) --- */
+.content-wrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--page-background); /* Fundo cinza claro */
+}
+
+.top-bar {
+  height: 64px;
+  background-color: white;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.sidebar-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: var(--text-color);
+  margin-right: 20px;
 }
 
 .main-content {
   flex-grow: 1;
-  width: 100%;
-  max-width: 1200px;
-  margin: 30px auto;
   padding: 30px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  box-sizing: border-box;
+  overflow-y: auto;
 }

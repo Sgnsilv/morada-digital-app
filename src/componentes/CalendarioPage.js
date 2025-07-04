@@ -8,14 +8,18 @@ import {
   collection,
   addDoc,
   getDocs,
-  doc,
-  deleteDoc,
   query,
   where,
+  Timestamp,
+  orderBy,
+  doc,
+  deleteDoc,
 } from "firebase/firestore";
 import { db, auth } from "../firebaseConfig";
 import "./CalendarioPage.css";
 
+// --- CONFIGURAÇÕES ESTÁVEIS DO CALENDÁRIO ---
+// Definidas fora do componente para não serem recriadas a cada renderização.
 moment.locale("pt-br");
 const localizer = momentLocalizer(moment);
 
@@ -32,42 +36,21 @@ const calendarMessages = {
   event: "Evento",
 };
 
-const calendarStyleGetter = (event) => {
-  // Define uma cor padrão
-  let backgroundColor = "var(--primary-green)";
-
-  // Verifica qual é a área comum do evento e muda a cor
-  switch (event.resource) {
-    case "Churrasqueira":
-      backgroundColor = "var(--light-green)"; // Nosso verde claro
-      break;
-    case "Quadra":
-      backgroundColor = "#3498db"; // Um tom de azul para a quadra
-      break;
-    case "Salão de Festas":
-      backgroundColor = "var(--primary-green)"; // Nosso verde escuro
-      break;
-    default:
-      backgroundColor = "#777"; // Uma cor cinza para qualquer outra área
-  }
-
-  // Cria o objeto de estilo com a cor que definimos
-  const style = {
-    backgroundColor: backgroundColor,
+const calendarStyleGetter = (event) => ({
+  style: {
+    backgroundColor:
+      event.resource === "Churrasqueira"
+        ? "var(--light-green)"
+        : "var(--primary-green)",
     borderRadius: "5px",
     color: "white",
     border: "0px",
     display: "block",
-  };
+  },
+});
 
-  return {
-    style: style,
-  };
-};
-
-const calendarStyle = {
-  height: 500,
-};
+const calendarStyle = { height: 500 };
+const calendarWrapperStyle = { height: "65vh" };
 // ---------------------------------------------
 
 function CalendarioPage({ user }) {
@@ -79,7 +62,6 @@ function CalendarioPage({ user }) {
   const [showModal, setShowModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
 
-  // Usamos useCallback para "memorizar" a função e evitar que ela seja recriada.
   const buscarAgendamentos = useCallback(async () => {
     const agendamentosSnapshot = await getDocs(collection(db, "agendamentos"));
     const listaDeEventos = agendamentosSnapshot.docs.map((d) => ({
@@ -99,53 +81,48 @@ function CalendarioPage({ user }) {
 
   const handleCriarAgendamento = async (e) => {
     e.preventDefault();
-
     if (!titulo || !dataInicio || !dataFim) {
       alert("Por favor, preencha todos os campos.");
       return;
     }
-
     const novaDataInicio = new Date(dataInicio);
     const novaDataFim = new Date(dataFim);
+
+    if (isNaN(novaDataInicio.getTime()) || isNaN(novaDataFim.getTime())) {
+      alert(
+        "Formato de data inválido. Por favor, verifique as datas e horários inseridos."
+      );
+      return;
+    }
 
     if (novaDataFim <= novaDataInicio) {
       alert("A data final deve ser posterior à data de início.");
       return;
     }
-
     try {
-      // --- INÍCIO DA LÓGICA DE VERIFICAÇÃO ---
       const agendamentosRef = collection(db, "agendamentos");
-
-      // Consulta 1: Verifica se há eventos que começam DURANTE o novo evento
       const q1 = query(
         agendamentosRef,
         where("areaComum", "==", areaComum),
         where("start", ">=", novaDataInicio),
         where("start", "<", novaDataFim)
       );
-
-      // Consulta 2: Verifica se há eventos que terminam DURANTE o novo evento
       const q2 = query(
         agendamentosRef,
         where("areaComum", "==", areaComum),
         where("end", ">", novaDataInicio),
         where("end", "<=", novaDataFim)
       );
-
-      // Consulta 3: Verifica se há eventos que ENGLOBAM o novo evento
       const q3 = query(
         agendamentosRef,
         where("areaComum", "==", areaComum),
         where("start", "<=", novaDataInicio),
         where("end", ">=", novaDataFim)
       );
-
       const querySnapshot1 = await getDocs(q1);
       const querySnapshot2 = await getDocs(q2);
       const querySnapshot3 = await getDocs(q3);
 
-      // Se qualquer uma das consultas retornar algum documento, significa que há um conflito.
       if (
         !querySnapshot1.empty ||
         !querySnapshot2.empty ||
@@ -154,11 +131,9 @@ function CalendarioPage({ user }) {
         alert(
           "Erro: Este horário e área já estão reservados. Por favor, escolha outro horário."
         );
-        return; // Para a execução da função aqui
+        return;
       }
-      // --- FIM DA LÓGICA DE VERIFICAÇÃO ---
 
-      // Se não houver conflitos, prosseguimos para criar o novo evento
       const novoEvento = {
         title: titulo,
         start: novaDataInicio,
@@ -167,7 +142,6 @@ function CalendarioPage({ user }) {
         userId: auth.currentUser.uid,
         userName: user.profile?.nome || user.email,
       };
-
       await addDoc(collection(db, "agendamentos"), novoEvento);
       alert("Agendamento criado com sucesso!");
       setTitulo("");
@@ -176,11 +150,12 @@ function CalendarioPage({ user }) {
       buscarAgendamentos();
     } catch (error) {
       console.error("Erro ao criar agendamento:", error);
-      alert("Ocorreu um erro ao criar o agendamento.");
+      alert(
+        "Ocorreu um erro ao criar o agendamento. Se o problema persistir, verifique o console (F12) por erros de 'índice' e siga o link para criá-lo no Firebase."
+      );
     }
   };
 
-  // Memorizando as funções que são passadas como props para o Calendário e Modal
   const handleSelectEvent = useCallback((event) => {
     setSelectedEvent(event);
     setShowModal(true);
@@ -204,8 +179,7 @@ function CalendarioPage({ user }) {
   );
 
   return (
-    <div>
-      {/* Esta funcionalidade de agendamento está alinhada com os objetivos do projeto. */}
+    <div className="page-content-card">
       <h2>Agendamento de Áreas Comuns</h2>
       <p>Visualize as datas ocupadas e planeje seu evento.</p>
 
@@ -220,6 +194,7 @@ function CalendarioPage({ user }) {
               placeholder="Ex: Festa de Aniversário"
               value={titulo}
               onChange={(e) => setTitulo(e.target.value)}
+              required
             />
           </div>
           <div className="form-group">
@@ -241,6 +216,7 @@ function CalendarioPage({ user }) {
               type="datetime-local"
               value={dataInicio}
               onChange={(e) => setDataInicio(e.target.value)}
+              required
             />
           </div>
           <div className="form-group">
@@ -250,13 +226,14 @@ function CalendarioPage({ user }) {
               type="datetime-local"
               value={dataFim}
               onChange={(e) => setDataFim(e.target.value)}
+              required
             />
           </div>
           <button type="submit">Agendar</button>
         </div>
       </form>
 
-      <div style={{ height: "65vh" }}>
+      <div style={calendarWrapperStyle}>
         <Calendar
           localizer={localizer}
           events={eventos}
