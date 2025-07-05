@@ -7,6 +7,15 @@
   box-sizing: border-box;
   background-color: var(--primary-green);
 }
+.auth-logo-container {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.auth-logo {
+  max-width: 350px; /* Você pode ajustar esse tamanho como preferir */
+  height: auto;
+}
 
 .auth-card {
   background-color: var(--card-background);

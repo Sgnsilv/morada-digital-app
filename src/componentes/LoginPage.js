@@ -1,9 +1,14 @@
+// src/componentes/LoginPage.js
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth, db } from '../firebaseConfig';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
-import './AuthPages.css';
+import './AuthPages.css'; // Usando o nosso CSS unificado
+
+// Importamos a imagem do logo da pasta assets
+import logoMoradaDigital from '../assets/logo.png';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -28,8 +33,10 @@ function LoginPage() {
     try {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
+
       const userDocRef = doc(db, "users", user.uid);
       const userDoc = await getDoc(userDocRef);
+
       if (!userDoc.exists()) {
         await setDoc(userDocRef, {
           nome: user.displayName,
@@ -47,6 +54,12 @@ function LoginPage() {
   return (
     <div className="auth-container">
       <div className="auth-card">
+        
+        {/* LOGO ADICIONADO AQUI */}
+        <div className="auth-logo-container">
+          <img src={logoMoradaDigital} alt="Logo Morada Digital" className="auth-logo" />
+        </div>
+
         <h2>Bem Vindo!</h2>
         <form onSubmit={handleLogin}>
           <div className="input-group">
@@ -62,10 +75,13 @@ function LoginPage() {
           </div>
           <button type="submit" className="auth-button">LOGIN</button>
         </form>
+
         <div className="divider">ou</div>
+        
         <button type="button" className="google-button" onClick={handleGoogleSignIn}>
           Continuar com Google
         </button>
+
         <div className="switch-page-link">
           <span>Não Possui Cadastro? </span>
           <Link to="/cadastro">Sign Up</Link>

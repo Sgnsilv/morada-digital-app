@@ -1,0 +1,173 @@
+.visitantes-container h2 {
+  border-bottom: 2px solid var(--primary-green);
+  padding-bottom: 10px;
+  color: var(--text-color);
+}
+
+.visitantes-container p {
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.visitante-form {
+  background: #fdfdfd;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 25px;
+  margin-bottom: 40px;
+}
+
+.visitante-form h3 {
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.visitante-form .form-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.visitante-form .form-group {
+  flex-grow: 1;
+  min-width: 200px;
+}
+
+.visitante-form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.visitante-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.visitante-form button {
+  padding: 10px 25px;
+  height: 42px;
+  border: none;
+  background-color: var(--primary-green);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.visitante-form button:hover {
+  background-color: var(--light-green);
+}
+
+.visitante-form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.portaria-view,
+.morador-view {
+  margin-top: 30px;
+}
+
+.portaria-view h3,
+.morador-view h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-color);
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.visitante-list-container {
+  background: white;
+  border: 1px solid #e9e9e9;
+  border-radius: 8px;
+  padding: 10px 20px;
+  margin-top: 20px;
+}
+
+.visitante-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.visitante-list li {
+  padding: 15px 5px;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.visitante-list li:last-child {
+  border-bottom: none;
+}
+
+.visitante-nome {
+  font-weight: 700;
+  color: var(--text-color);
+  font-size: 1.1em;
+}
+
+.visitante-info {
+  color: #555;
+  white-space: nowrap;
+}
+
+.visitante-status {
+  margin-left: auto;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  font-weight: 700;
+  color: white;
+  text-transform: capitalize;
+}
+
+.status-aguardando {
+  background-color: #f39c12; /* Laranja */
+}
+.status-chegou {
+  background-color: var(--light-green);
+}
+.status-saiu {
+  background-color: #777;
+}
+
+.portaria-actions {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.portaria-actions button {
+  padding: 5px 10px;
+  font-size: 0.9em;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.delete-visita-btn {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  color: #e74c3c;
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: 5px;
+}

@@ -1,56 +1,110 @@
-.dashboard-layout {
+/* src/componentes/CalendarioPage.css */
+
+.booking-form {
+  margin-bottom: 30px;
+  padding: 25px;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.booking-form h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+  color: var(--text-color);
+}
+
+.booking-form .form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-end;
+}
+
+.booking-form .form-group {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  background-color: #f4f6f8; /* Um cinza bem claro para o fundo do corpo */
+  flex-grow: 1;
 }
 
-/* O nosso cabeçalho verde */
-.dashboard-header {
-  background-color: var(--primary-green);
-  color: white;
-  padding: 15px 30px;
-  display: flex;
-  justify-content: space-between; /* Alinha itens nas extremidades */
-  align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.dashboard-header .logo {
-  font-size: 24px;
-  font-weight: 700;
-}
-
-.dashboard-header .logout-button {
-  background-color: transparent;
-  color: white;
-  border: 1px solid white;
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
+.booking-form label {
   font-size: 14px;
   font-weight: 500;
-  transition: background-color 0.3s, color 0.3s;
+  margin-bottom: 5px;
+  color: #555;
 }
 
-.dashboard-header .logout-button:hover {
-  background-color: white;
-  color: var(--primary-green);
+.booking-form input,
+.booking-form select {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* A área de conteúdo principal */
-.dashboard-content {
-  flex-grow: 1;
+.booking-form button {
+  padding: 10px 25px;
+  height: 42px;
+  border: none;
+  background-color: var(--primary-green);
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.booking-form button:hover {
+  background-color: var(--light-green);
+}
+
+/* Estilos do Modal */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 1200px; /* Largura máxima para o conteúdo */
-  margin: 30px auto; /* Centraliza a área de conteúdo */
-  padding: 30px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  box-sizing: border-box;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
 }
 
-.welcome-message h1 {
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  width: 90%;
+  max-width: 500px;
+}
+
+.modal-content h3 {
   margin-top: 0;
+}
+
+.modal-content .close-button {
+  background-color: #ccc;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.modal-content .cancel-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-right: 10px;
 }
