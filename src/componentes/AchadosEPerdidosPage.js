@@ -9,7 +9,6 @@ import {
   where,
   doc,
   updateDoc,
-  deleteDoc,
 } from "firebase/firestore";
 import { db, auth } from "../firebaseConfig";
 import moment from "moment";
