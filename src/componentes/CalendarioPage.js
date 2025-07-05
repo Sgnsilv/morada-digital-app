@@ -41,7 +41,7 @@ const calendarStyle = { height: 500 };
 
 function CalendarioPage({ user }) {
   const [eventos, setEventos] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [setLoading] = useState(true);
   const [titulo, setTitulo] = useState('');
   const [dataInicio, setDataInicio] = useState('');
   const [dataFim, setDataFim] = useState('');
