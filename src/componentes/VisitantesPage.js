@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { collection, addDoc, getDocs, query, where, Timestamp, orderBy, doc, updateDoc, deleteDoc } from 'firebase/firestore';
-import { db, auth } from '../firebaseConfig';
+import { db} from '../firebaseConfig';
 import moment from 'moment';
 import 'moment/locale/pt-br';
 import { FiUserPlus, FiClipboard, FiTrash2, FiLogIn, FiLogOut } from 'react-icons/fi';
