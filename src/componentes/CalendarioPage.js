@@ -4,7 +4,7 @@ import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'moment/locale/pt-br';
 
-import { collection, addDoc, getDocs, query, where, Timestamp, orderBy, doc, deleteDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs, query, where, doc, deleteDoc } from 'firebase/firestore';
 import { db, auth } from '../firebaseConfig';
 import './CalendarioPage.css';
 import './PageContent.css';
